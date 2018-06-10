@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-sm-6 form-group">
+    <div class="row">
+      <h3>Search for records</h3>
+      <div class="col-sm-4 form-group">
+        <input type="number" placeholder="Album ID" class="form-control" [(ngModel)]="options.albumId" (ngModelChange)="this.passData.emit(this.options)">
+      </div>
+      <div class="col-sm-4 form-group">
+        <input type="number" placeholder="ID" class="form-control" [(ngModel)]="options.id" (ngModelChange)="this.passData.emit(this.options)">
+      </div>
+      <div class="col-sm-4 form-group">
+        <input type="text" placeholder="Title" class="form-control" [(ngModel)]="options.title" (ngModelChange)="this.passData.emit(this.options)">
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3 form-group">
+    <div>
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <h3>Current page</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <div class="col-sm-4">
+            <button type="button" (click)="this.pageDown.emit(this.options)" class="btn btn-default btn-sm">
+                <span  class="glyphicon glyphicon-circle-arrow-left"></span>
+              </button>
+          </div>
+          <div class="col-sm-4">
+            <p> {{currentPageChild}} / {{allPagesChild}} </p>
+          </div>
+          <div class="col-sm-4">
+            <button type="button" (click)="this.pageUp.emit(this.options)" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-circle-arrow-right"></span>
+              </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3 form-group">
+    <div class="pull-right">
+      <div class="row">
+        <div class="col-sm-12">
+          <h3>Show records</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <select class="form-control" [(ngModel)]="options.recordsDisplayed" (ngModelChange)="this.passData.emit(this.options)">
+            <option>50</option>
+            <option>100</option>
+            <option>1000</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

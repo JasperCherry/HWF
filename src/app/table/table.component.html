@@ -1,0 +1,38 @@
+<app-table-options (passData)="onPassData($event)" (pageUp)="onPageUp($event)" (pageDown)="onPageDown($event)" [currentPageChild]="currentPage" [allPagesChild]="allPages"></app-table-options>
+<div class="row">
+  <div class="col-sm-12 form-group text-center">
+    <h1 *ngIf="loadingTableData">Loading table data...</h1>
+  </div>
+</div>
+<table *ngIf="!loadingTableData" class="table table-striped">
+  <thead>
+    <tr>
+      <th>Album ID
+        <span (click)="sort('albumId')" *ngIf="sortRising.albumId===null" class="glyphicon glyphicon-stop"></span>
+        <span (click)="sort('albumId')" *ngIf="sortRising.albumId===true" class="glyphicon glyphicon-menu-up"></span>
+        <span (click)="sort('albumId')" *ngIf="sortRising.albumId===false" class="glyphicon glyphicon-menu-down"></span>
+      </th>
+      <th>ID
+        <span (click)="sort('id')" *ngIf="sortRising.id===null" class="glyphicon glyphicon-stop"></span>
+        <span (click)="sort('id')" *ngIf="sortRising.id===true" class="glyphicon glyphicon-menu-up"></span>
+        <span (click)="sort('id')" *ngIf="sortRising.id===false" class="glyphicon glyphicon-menu-down"></span>
+      </th>
+      <th>Title
+        <span (click)="sort('title')" *ngIf="sortRising.title===null" class="glyphicon glyphicon-stop"></span>
+        <span (click)="sort('title')" *ngIf="sortRising.title===true" class="glyphicon glyphicon-menu-up"></span>
+        <span (click)="sort('title')" *ngIf="sortRising.title===false" class="glyphicon glyphicon-menu-down"></span>
+      </th>
+      <th>URL</th>
+      <th>Thumbnail</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let photo of photosData">
+      <td>{{ photo.albumId }}</td>
+      <td>{{ photo.id }}</td>
+      <td>{{ photo.title }}</td>
+      <td><a href="{{photo.url}}">{{ photo.url }}</a></td>
+      <td><img src="{{ photo.thumbnailUrl }}"></td>
+    </tr>
+  </tbody>
+</table>
